@@ -11,22 +11,22 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "ubuntu 8"
+theme.font          = "Roboto Condensed 8"
 
-theme.bg_normal     = "#303030"
+theme.bg_normal     = "#ecf0f4"
 theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
+theme.fg_normal     = "#333333"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(1)
-theme.border_normal = "#000000"
+theme.border_normal = "#ecf0f4"
 theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
 
@@ -42,6 +42,8 @@ theme.border_marked = "#91231c"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
+
+theme.tasklist_disable_task_name = true
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
