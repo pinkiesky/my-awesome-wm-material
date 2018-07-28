@@ -44,6 +44,10 @@ theme.border_marked = "#91231c"
 --theme.taglist_bg_focus = "#ff0000"
 
 theme.tasklist_disable_task_name = true
+-- theme.tasklist_
+theme.tasklist_shape_border_width = 5
+theme.tasklist_spacing = dpi(1)
+theme.tasklist_align = 'center'
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
@@ -119,9 +123,9 @@ theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
-theme.wibar_border_width = dpi(2)
+theme.wibar_border_width = dpi(1)
 theme.wibar_border_color = theme.bg_normal
-theme.wibar_height = dpi(20)
+theme.wibar_height = dpi(25)
 -- theme.wibar_ = 
 
 -- Generate Awesome icon:
