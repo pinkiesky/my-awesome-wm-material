@@ -4,6 +4,7 @@
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
+local shape = require("gears").shape
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
@@ -11,18 +12,18 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "Roboto Condensed 8"
+theme.font          = "Roboto Condensed 9"
 
 theme.bg_normal     = "#ecf0f4"
 theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
+theme.bg_minimize   = "#CAB19B"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#333333"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+-- theme.fg_focus      = "#ffffff"
+-- theme.fg_urgent     = "#ffffff"
+-- theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(1)
@@ -43,9 +44,20 @@ theme.border_marked = "#91231c"
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
-theme.tasklist_disable_task_name = true
+theme.tasklist_disable_icon = true
+theme.tasklist_disable_task_name = false
+
+local line = function(cr, width, height)
+    shape.transform(shape.rectangle) 
+        : translate(0, 0)(cr, width, 4)
+end
+
 -- theme.tasklist_
-theme.tasklist_shape_border_width = 5
+theme.tasklist_shape = line
+theme.tasklist_shape_focus = line
+theme.tasklist_shape_minimized = line
+theme.tasklist_shape_urgent = line
+
 theme.tasklist_spacing = dpi(1)
 theme.tasklist_align = 'center'
 
