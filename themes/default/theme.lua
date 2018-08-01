@@ -27,8 +27,8 @@ theme.fg_normal     = "#333333"
 
 theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(1)
-theme.border_normal = "#ecf0f4"
-theme.border_focus  = "#535d6c"
+theme.border_normal = theme.bg_normal
+theme.border_focus  = theme.bg_focus
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -54,6 +54,7 @@ end
 
 -- theme.tasklist_
 theme.tasklist_shape = line
+theme.tasklist_bg_normal = '#B7BEC8'
 theme.tasklist_shape_focus = line
 theme.tasklist_shape_minimized = line
 theme.tasklist_shape_urgent = line
@@ -61,14 +62,13 @@ theme.tasklist_shape_urgent = line
 theme.tasklist_spacing = dpi(1)
 theme.tasklist_align = 'center'
 
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
-)
+theme.taglist_shape = function(cr, w, h) 
+    shape.circle(cr, w, h)
+end
+theme.taglist_bg_occupied = theme.bg_minimize
+theme.taglist_bg_focus = theme.bg_focus
+theme.taglist_fg_focus = '#ffffff'
+theme.taglist_bg_empty = theme.bg_normal
 
 -- Variables set for theming notifications:
 -- notification_font
@@ -135,15 +135,10 @@ theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
-theme.wibar_border_width = dpi(1)
+theme.wibar_border_width = 2
 theme.wibar_border_color = theme.bg_normal
 theme.wibar_height = dpi(25)
 -- theme.wibar_ = 
-
--- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.bg_focus, theme.fg_focus
-)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
