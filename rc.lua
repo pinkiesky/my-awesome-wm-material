@@ -182,7 +182,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
     sprtr = wibox.widget.textbox()
-    sprtr:set_text(" ⁞ ")
+    sprtr:set_text(" | ")
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -197,15 +197,15 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-	    sprtr,
+	        sprtr,
             mykeyboardlayout,
-	    sprtr,
+	        sprtr,
             wibox.widget.systray(),
-	    sprtr,
-	    awful.widget.watch('bash /home/rglr/free.mem.sh', 15),
-	    sprtr,
+	        sprtr,
+	        awful.widget.watch('bash /home/rglr/free.mem.sh', 15),
+	        sprtr,
             mytextclock,
-	    sprtr,
+	        sprtr,
             s.mylayoutbox,
         },
     }
