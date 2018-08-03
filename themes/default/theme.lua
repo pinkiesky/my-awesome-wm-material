@@ -12,15 +12,24 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
+local materialColor = {
+    primary = "#445848",
+    primaryLight = "#6f8573",
+    secondary = "#88B090",
+    secondaryLight = "#b8e2c0",
+    urgent = "#ff0000",
+    bg = "#ECF0F4",
+}
+
 theme.font          = "Roboto Condensed 9"
 
-theme.bg_normal     = "#ecf0f4"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#CAB19B"
-theme.bg_systray    = theme.bg_normal
+theme.bg_normal = materialColor.bg
+theme.bg_focus = materialColor.primary
+theme.bg_urgent = materialColor.urgent
+theme.bg_minimize = materialColor.secondaryLight
+theme.bg_systray = theme.bg_normal
 
-theme.fg_normal     = "#333333"
+theme.fg_normal     = "#222222"
 -- theme.fg_focus      = "#ffffff"
 -- theme.fg_urgent     = "#ffffff"
 -- theme.fg_minimize   = "#ffffff"
@@ -29,7 +38,7 @@ theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(1)
 theme.border_normal = theme.bg_normal
 theme.border_focus  = theme.bg_focus
-theme.border_marked = "#91231c"
+theme.border_marked = materialColor.urgent
 
 -- There are other variable sets
 -- overriding the default one when
@@ -47,17 +56,20 @@ theme.border_marked = "#91231c"
 theme.tasklist_disable_icon = true
 theme.tasklist_disable_task_name = false
 
-local line = function(cr, width, height)
-    shape.transform(shape.rectangle) 
-        : translate(0, 0)(cr, width, 4)
+local line = function(lineHeight)
+    return function(cr, width, height)
+        shape.transform(shape.rectangle) 
+            : translate(0, 0)(cr, width, lineHeight)
+    end
 end
 
 -- theme.tasklist_
-theme.tasklist_shape = line
-theme.tasklist_bg_normal = '#B7BEC8'
-theme.tasklist_shape_focus = line
-theme.tasklist_shape_minimized = line
-theme.tasklist_shape_urgent = line
+local defaultLineHeight = 4
+theme.tasklist_shape = line(defaultLineHeight)
+theme.tasklist_bg_normal = materialColor.primary
+theme.tasklist_shape_focus = line(defaultLineHeight)
+theme.tasklist_shape_minimized = line(defaultLineHeight / 2)
+theme.tasklist_shape_urgent = line(defaultLineHeight * 2)
 
 theme.tasklist_spacing = dpi(1)
 theme.tasklist_align = 'center'
@@ -65,8 +77,8 @@ theme.tasklist_align = 'center'
 theme.taglist_shape = function(cr, w, h) 
     shape.circle(cr, w, h)
 end
-theme.taglist_bg_occupied = theme.bg_minimize
-theme.taglist_bg_focus = theme.bg_focus
+theme.taglist_bg_occupied = materialColor.primaryLight
+theme.taglist_bg_focus = materialColor.primary
 theme.taglist_fg_focus = '#ffffff'
 theme.taglist_bg_empty = theme.bg_normal
 
@@ -115,7 +127,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/rglr/.config/awesome/themes/default/mat.jpg"
+theme.wallpaper = "/home/rglr/.config/awesome/themes/default/flat.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairh.png"
