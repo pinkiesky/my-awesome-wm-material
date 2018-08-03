@@ -10,6 +10,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local meminfo = require('.meminfo')
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -184,6 +185,21 @@ awful.screen.connect_for_each_screen(function(s)
     sprtr = wibox.widget.textbox()
     sprtr:set_text(" | ")
 
+    local memInfoText = wibox.widget {
+        text = 'TBD 🍴',
+        widget = wibox.widget.textbox,
+    }
+    
+    gears.timer {
+        timeout   = 15,
+        autostart = true,
+        callback  = function()
+            local mem = meminfo()
+            memInfoText.text = math.floor((1 - mem.MemAvailable / mem.MemTotal) * 100)
+            memInfoText.text = memInfoText.text .. '% RAM 🍴'
+        end
+    }
+
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -201,8 +217,8 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
 	        sprtr,
             wibox.widget.systray(),
-	        sprtr,
-	        awful.widget.watch('bash /home/rglr/free.mem.sh', 15),
+            sprtr,
+            memInfoText,
 	        sprtr,
             mytextclock,
 	        sprtr,
