@@ -17,7 +17,7 @@ local materialColor = {
     primaryLight = "#6f8573",
     secondary = "#88B090",
     secondaryLight = "#b8e2c0",
-    urgent = "#ff0000",
+    urgent = "#B07246",
     bg = "#ECF0F4",
 }
 
@@ -59,7 +59,7 @@ theme.tasklist_disable_task_name = false
 local line = function(lineHeight)
     return function(cr, width, height)
         shape.transform(shape.rectangle) 
-            : translate(0, 0)(cr, width, lineHeight)
+            : translate(0, 0)(cr, width, lineHeight or height)
     end
 end
 
@@ -67,7 +67,8 @@ end
 local defaultLineHeight = 4
 theme.tasklist_shape = line(defaultLineHeight)
 theme.tasklist_bg_normal = materialColor.primary
-theme.tasklist_shape_focus = line(defaultLineHeight)
+theme.tasklist_shape_focus = line(false)
+theme.tasklist_fg_focus = 'white'
 theme.tasklist_shape_minimized = line(defaultLineHeight / 2)
 theme.tasklist_shape_urgent = line(defaultLineHeight * 2)
 
