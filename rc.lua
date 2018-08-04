@@ -185,46 +185,56 @@ awful.screen.connect_for_each_screen(function(s)
     sprtr = wibox.widget.textbox()
     sprtr:set_text(" | ")
 
-    local memInfoText = wibox.widget {
-        text = 'TBD 🍴',
-        widget = wibox.widget.textbox,
-    }
+    local rightPart;
+    if screen.primary == s then
+        local memInfoText = wibox.widget {
+            text = 'TBD 🍴',
+            widget = wibox.widget.textbox,
+        }
+        
+        gears.timer {
+            timeout   = 15,
+            autostart = true,
+            callback  = function()
+                local mem = meminfo()
+                memInfoText.text = math.floor((1 - mem.MemAvailable / mem.MemTotal) * 100)
+                memInfoText.text = memInfoText.text .. '% RAM 🍴'
+            end
+        }
     
-    gears.timer {
-        timeout   = 15,
-        autostart = true,
-        callback  = function()
-            local mem = meminfo()
-            memInfoText.text = math.floor((1 - mem.MemAvailable / mem.MemTotal) * 100)
-            memInfoText.text = memInfoText.text .. '% RAM 🍴'
-        end
-    }
+        rightPart = {
+            layout = wibox.layout.fixed.horizontal,
+            sprtr,
+            mykeyboardlayout,
+            sprtr,
+            wibox.widget.systray(),
+            sprtr,
+            memInfoText,
+            sprtr,
+            mytextclock,
+            sprtr,
+            s.mylayoutbox,
+        };
+    else
+        rightPart = { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            sprtr,
+            s.mylayoutbox,
+        };
+    end
 
-    -- Add widgets to the wibox
-    s.mywibox:setup {
+    local wiboxLayout = {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
---            mylauncher,
             s.mytaglist,
             s.mypromptbox,
             sprtr,
         },  
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-	        sprtr,
-            mykeyboardlayout,
-	        sprtr,
-            wibox.widget.systray(),
-            sprtr,
-            memInfoText,
-	        sprtr,
-            mytextclock,
-	        sprtr,
-            s.mylayoutbox,
-        },
-    }
+        s.mytasklist, -- Middle widget,
+        rightPart,
+    };
+    s.mywibox:setup(wiboxLayout);
 end)
 -- }}}
 
