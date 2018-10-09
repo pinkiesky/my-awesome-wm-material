@@ -13,12 +13,12 @@ local themes_path = gfs.get_themes_dir()
 local theme = {}
 
 local materialColor = {
-    primary = "#445848",
-    primaryLight = "#6f8573",
-    secondary = "#88B090",
-    secondaryLight = "#b8e2c0",
-    urgent = "#B07246",
-    bg = "#ECF0F4",
+    primary = "#BC1938",
+    primaryLight = "#FA9381",
+    secondary = "#EAB305",
+    secondaryLight = "#FDC92B",
+    urgent = "#D64310",
+    bg = "#FFFAFA",
 }
 
 theme.font          = "Roboto Condensed 9"
