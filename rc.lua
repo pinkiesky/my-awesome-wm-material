@@ -152,8 +152,8 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     tags_name = {}    -- new array
-    for i=1, 5 do
-        tags_name[i] = s.index..string.char(64 + i)
+    for i=1, 7 do
+        tags_name[i] = string.char(64 + s.index)..i
     end
     awful.tag(tags_name, s, awful.layout.layouts[1])
 
