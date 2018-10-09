@@ -34,8 +34,8 @@ theme.fg_normal     = "#222222"
 -- theme.fg_urgent     = "#ffffff"
 -- theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(3)
-theme.border_width  = dpi(1)
+theme.useless_gap   = dpi(1)
+theme.border_width  = dpi(3)
 theme.border_normal = theme.bg_normal
 theme.border_focus  = theme.bg_focus
 theme.border_marked = materialColor.urgent
