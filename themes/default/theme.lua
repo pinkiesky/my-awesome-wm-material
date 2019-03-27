@@ -12,12 +12,14 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
+theme.icons = os.getenv("HOME") .. "/.config/awesome/themes/default/icons/"
+
 local materialColor = {
-    primary = "#BC1938",
-    primaryLight = "#FA9381",
-    secondary = "#EAB305",
-    secondaryLight = "#FDC92B",
-    urgent = "#D64310",
+    primary = "#BEBEBE",
+    primaryLight = "#E9E9E9",
+    secondary = "#252525",
+    secondaryLight = "#585858",
+    urgent = "#581102",
     bg = "#FFFAFA",
 }
 
@@ -29,7 +31,7 @@ theme.bg_urgent = materialColor.urgent
 theme.bg_minimize = materialColor.secondaryLight
 theme.bg_systray = theme.bg_normal
 
-theme.fg_normal     = "#222222"
+theme.fg_normal     = "#350701"
 -- theme.fg_focus      = "#ffffff"
 -- theme.fg_urgent     = "#ffffff"
 -- theme.fg_minimize   = "#ffffff"
@@ -75,9 +77,6 @@ theme.tasklist_shape_urgent = line(defaultLineHeight * 2)
 theme.tasklist_spacing = dpi(1)
 theme.tasklist_align = 'center'
 
-theme.taglist_shape = function(cr, w, h) 
-    shape.circle(cr, w, h)
-end
 theme.taglist_bg_occupied = materialColor.primaryLight
 theme.taglist_bg_focus = materialColor.primary
 theme.taglist_fg_focus = '#ffffff'
@@ -128,7 +127,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/rglr/.config/awesome/themes/default/orch.jpg"
+theme.wallpaper = "/home/rglr/.config/awesome/themes/default/sc-airR.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairh.png"
