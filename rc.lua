@@ -86,7 +86,9 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+clockDate = wibox.widget.textclock("%a %d %b")
+clockYakt = wibox.widget.textclock("YAKT %H:%M", 60, "Asia/Yakutsk")
+clockMoscow = wibox.widget.textclock("MSK %H:%M", 60, "Europe/Moscow")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -206,7 +208,11 @@ awful.screen.connect_for_each_screen(function(s)
             sprtr,
             memInfoText,
             sprtr,
-            mytextclock,
+            clockDate,
+            sprtr,
+            clockYakt,
+            sprtr,
+            clockMoscow,
             sprtr,
             s.mylayoutbox,
         };
